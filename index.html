@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About Me | Dusty</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,500;1,6..72,300&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Centering overrides (style.css left untouched) */
+    body { text-align: center; }
+    .hero { align-items: center; justify-content: center; }
+    .hero-sub { margin-left: auto; margin-right: auto; }
+    section { grid-template-columns: 1fr; justify-items: center; }
+    .prose, dl, blockquote { width: 100%; margin-left: auto; margin-right: auto; }
+
+    /* Shorter divider lines: change 30% / 40% to adjust their length */
+    section, .site-footer {
+      border-top: 0;
+      background: linear-gradient(var(--line), var(--line)) top center / 30% 1px no-repeat;
+    }
+    dl div {
+      border-bottom: 0;
+      background: linear-gradient(var(--line), var(--line)) bottom center / 40% 1px no-repeat;
+    }
+    dl div:last-child { background: none; }
+
+    /* GIF overlay on the left */
+    .gif-overlay {
+      position: fixed;
+      left: 40px;            /* gap from the left edge: change this to taste */
+      top: 50%;
+      transform: translateY(-50%);
+      width: 420px;
+      height: 420px;
+      z-index: 10;
+      pointer-events: none;  /* clicks and text selection pass through */
+    }
+    .gif-overlay.right { left: auto; right: 40px; }
+    @media (max-width: 1100px) { .gif-overlay { display: none; } }
+  </style>
+</head>
+<body>
+
+    <img class="gif-overlay" src="dark_triad.gif" alt="" width="420" height="420">
+    <img class="gif-overlay right" src="gay.png" alt="" width="420" height="420">
+
+  <header class="hero">
+    <h1>DUSTY<br>The Dark Overlord</h1>
+    <p class="hero-sub">Narcissist, Machiavellianist, Psychopath</p>
+  </header>
+
+  <main>
+    <section class="about">
+      <h2>About me</h2>
+      <div class="prose">
+        <p>I'm a narcissist, I think everyone sucks except me, unless I give you my seal of approval.</p>
+        <p>I have a rather unconventional understanding of morality. I don't necessarily distinguish between right and wrong, but rather between mildly inconvenient and personally beneficial. Ethics are more of a suggestion to me.</p>
+        <p>Generally pretty unfriendly and closed off to talking. I don't particularly try to be understanding, and I will absolutely fucking judge you if I think you are weird.</p>
+        <p>I show no remorse to my enemies. I have absolutely no interest in making peace or negotiating. I will execute anybody who gets in my way.</p>
+        <p>I was diagnosed with Antisocial Personality Disorder (ASPD).</p>
+        <p>Alright, that's it, fuck off now.</p>
+      </div>
+    </section>
+  </main>
+
+  <audio id="bgm" src="website_song.mp3" loop autoplay></audio>
+
+  <script>
+    const bgm = document.getElementById("bgm");
+
+    // Try to start immediately. Browsers often block this until the visitor interacts.
+    bgm.play().catch(() => {
+      // Fallback: start on the first click, tap, or key press.
+      const start = () => {
+        bgm.play();
+        ["click", "touchstart", "keydown"].forEach(e => document.removeEventListener(e, start));
+      };
+      ["click", "touchstart", "keydown"].forEach(e => document.addEventListener(e, start));
+    });
+  </script>
+
+</body>
+</html>
